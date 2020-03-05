@@ -4,17 +4,18 @@ import java.lang.*;
 
 public class wallet {
 	
-
-	// Deposite/Add
-	// Withdraw/Delete
+ 	/*
+	// Deposite/Add (amount, category, date)
+	// Withdraw/Delete (amount, category, date)
 	// SortRecently
 	// SortLatest
-	// SortCategory
+	// SortCategory?
 	// SortAmount
 	// PrintTotalIncome
 	// PrintTotalExpenses
 	// PrintNetExpenses
 	// PrintCurrentBalance
-	//
-
+	
+	Need to create transaction class which will be referenced by the wallet object
+	*/
 }
