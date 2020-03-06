@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.lang.*;
 
-public class wallet {
+public class Wallet {
 	
  	/*
 	// Deposite/Add (amount, category, date)
