@@ -14,6 +14,7 @@ BigDecimal b = a.setScale(2, RoundingMode.DOWN); // => BigDecimal("1.23")
 */
 
 public class Transaction {
+
 	private double amount;
 	private Date date; 
 	private String category; 
@@ -24,9 +25,21 @@ public class Transaction {
 		this.category = "";
 	}
 
+	public Transaction(double amount, Date date) {
+		this.amount = amount;
+		this.date = date;
+		this.category = "Unassigned";
+	}
+
 	public Transaction(double amount, Date date, String category) {
 		this.amount = amount;
 		this.date = date;
 		this.category = category;
+	}
+
+	public String toString() {
+		return "Amount: $" + amount + 
+		"\nDate: " + date.toString() + 
+		"\nCategory: " + category;
 	}
 }
