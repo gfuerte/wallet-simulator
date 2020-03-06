@@ -23,7 +23,13 @@ public class Wallet {
 		wallet.add(a);
 		System.out.println(wallet.get(0).toString());
 
+
+		Date test = new Date(6, 12, 2020);
+		System.out.println("\n" + test.getValue());
 	}
+}
+
+	
  	/*
 	// Deposite/Add (amount, category, date)
 	// Withdraw/Delete (amount, category, date)
@@ -38,7 +44,6 @@ public class Wallet {
 	
 	Need to create transaction class which will be referenced by the wallet object
 	*/
-}
 
 /* Self learned notes cause nobody has taught me these:
 Encapsulation is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates.

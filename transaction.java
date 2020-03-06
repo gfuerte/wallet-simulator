@@ -44,6 +44,18 @@ public class Transaction {
 		this.category = category;
 	}
 
+	public double getAmount() {
+		return this.amount;
+	}
+
+	public String getDate() {
+		return this.date.toString();
+	}
+
+	public String getCategory() {
+		return this.category;
+	}
+
 	public String toString() {
 		return "Amount: $" + amount + 
 		"\nDate: " + date.toString() + 

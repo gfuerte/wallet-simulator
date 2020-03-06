@@ -1,4 +1,4 @@
-//Self-made Date class because apprently java.util.Date is Deprecated
+//Self-made Date class because apprently java.util.Date is Deprecated ):
 public class Date {
 	private int day;
 	private String month;
@@ -43,6 +43,36 @@ public class Date {
 		return null;
 	}
 
+	public int monthToInt(String month) {
+		switch(month) {
+			case "January":
+				return 1;
+			case "February":
+				return 2;
+			case "March":
+				return 3;
+			case "April":
+				return 4;
+			case "May":
+				return 5;
+			case "June":
+				return 6;
+			case "July":
+				return 7;
+			case "August":
+				return 8;
+			case "September":
+				return 9;
+			case "October":
+				return 10;
+			case "November":
+				return 11;
+			case "December":
+				return 12;										
+		}
+		return 0;
+	}
+
 	public Date(int day, String month, int year) {
 		this.day = day;
 		this.month = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
@@ -55,7 +85,39 @@ public class Date {
 		this.year = year;
 	}
 
+	public int getDay() {
+		return this.day;
+	}
+
+	public String getMonth() {
+		return this.month;
+	}
+
+	public int getYear() {
+		return this.year;
+	}
+
+	public int getValue() {
+		if (this.day == -1 || this.month.equals("") || this.year == -1) {
+			return -1;
+		}
+		String sum = Integer.toString(this.year);
+		String monthString = Integer.toString(monthToInt(this.month));
+		String dayString = Integer.toString(this.day);
+		if (monthString.length() < 2) {
+			monthString = "0" + monthString;
+		}
+		if (dayString.length() < 2) {
+			dayString = "0" + dayString;
+		}
+		sum = sum + monthString + dayString;
+		return Integer.parseInt(sum);
+	}
+
 	public String toString() {
+		if (this.day == -1 || this.month.equals("") || this.year == -1) {
+			return "Unassigned";
+		}
 		return this.month + " " + this.day + " " + this.year;
 	}
 }
