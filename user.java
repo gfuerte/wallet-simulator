@@ -5,10 +5,10 @@ import java.util.StringTokenizer;
 
 public class User {
 
-	static Scanner stdin = new Scanner(System.in);
-	static String options = "hprbdaq";
+	static Scanner scanner = new Scanner(System.in);
+	static String options = "abcdefghijklmnopqrstuvwxyz";
 	
-	static char getOption() {
+	public static char getOption() {
 		System.out.print("\nChoose action: ");
 		System.out.print("(p)rint Tree, ");
 		System.out.print("(h)tml, ");
@@ -17,23 +17,21 @@ public class User {
 		System.out.print("(d)elete tag, ");
 		System.out.print("(a)dd tag, or ");
 		System.out.print("(q)uit? => ");
-		char response = stdin.nextLine().toLowerCase().charAt(0);
-		while (!options.contains(response+"")) {
+		char result = scanner.nextLine().toLowerCase().charAt(0);
+		while (!options.contains(result + "")) {
 			System.out.print("\tYou must enter one of p, h, r, b, d, a, or q => ");
-			response = stdin.nextLine().toLowerCase().charAt(0);
+			result = scanner.nextLine().toLowerCase().charAt(0);
 		}
-		return response;
+		return result;
 	}
 	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) 
-	throws IOException {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Welcome to Wallet-Simulator!");
+		System.out.println("This program simulates a wallet by essentially allowing you to create a budget spreadsheet"); 
+		System.out.println("and provides a set of functions that can help you organize your budget.\n");
 		// TODO Auto-generated method stub
 		System.out.print("Enter HTML file name => ");
-		String htmlFile = stdin.nextLine();
+		String htmlFile = scanner.nextLine();
 		//Tree tree = new Tree(new Scanner(new File(htmlFile)));
 		//tree.build();
 		
@@ -46,16 +44,16 @@ public class User {
 					//tree.print();
 			} else if (option == 'r') {
 				System.out.print("\tEnter old tag => ");
-				String oldTag = stdin.nextLine();
+				String oldTag = scanner.nextLine();
 				System.out.print("\tEnter new tag => ");
-				String newTag = stdin.nextLine();
+				String newTag = scanner.nextLine();
 				//tree.replaceTag(oldTag, newTag);
 			} else if (option == 'b') {
 				System.out.print("\tEnter row number (1..n) => ");
 				int row;
 				while (true) {
 					try {
-						row = Integer.parseInt(stdin.nextLine());
+						row = Integer.parseInt(scanner.nextLine());
 						if (row > 0) {
 							break;
 						} else {
@@ -72,12 +70,12 @@ public class User {
 				}
 			} else if (option == 'd') {
 				System.out.print("\tEnter tag to remove => ");
-				//tree.removeTag(stdin.nextLine().trim());
+				//tree.removeTag(scanner.nextLine().trim());
 			} else if (option == 'a') {
 				System.out.print("\tEnter text to tag => ");
-				String text = stdin.nextLine().trim();
+				String text = scanner.nextLine().trim();
 				System.out.print("\tEnter tag => ");
-				String tag = stdin.nextLine().trim();
+				String tag = scanner.nextLine().trim();
 				//tree.addTag(text, tag);
 			}
 		}

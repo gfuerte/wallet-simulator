@@ -58,7 +58,7 @@ public class Transaction {
 
 	public String toString() {
 		return "Amount: $" + amount + 
-		"\nDate: " + date.toString() + 
-		"\nCategory: " + category;
+		"\tDate: " + date.toString() + 
+		"\tCategory: " + category;
 	}
 }

@@ -25,7 +25,9 @@ public class Wallet {
 
 
 		Date test = new Date(6, 12, 2020);
-		System.out.println("\n" + test.getValue());
+		Transaction b = new Transaction(40.00, test, "Gym");
+		wallet.add(b);
+		System.out.println(wallet.get(1).toString());
 	}
 }
 
@@ -39,10 +41,8 @@ public class Wallet {
 	// SortAmount
 	// PrintTotalIncome
 	// PrintTotalExpenses
-	// PrintNetExpenses
+	// Print
 	// PrintCurrentBalance
-	
-	Need to create transaction class which will be referenced by the wallet object
 	*/
 
 /* Self learned notes cause nobody has taught me these:
