@@ -1,50 +1,59 @@
 import java.io.File;
 import java.io.IOException;
+import java.lang.System;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class User {
 
 	static Scanner scanner = new Scanner(System.in);
-	static String optionStart = "cuq";
-	static String optionMain = "dwpsq";
-	static String optionPrint = "iebsq";
-	static String optionPrintAlt = "omy";
-	static String optionSort = "rlcq";
+	static String optionStart = "cuqCUQ";
+	static String optionMain = "dwpsqDWPSQ";
+	static String optionPrint = "iebsqIEBSQ";
+	static String optionPrintAlt = "omyOMY";
+	static String optionSort = "rlcqRLCQ";
 	static String options = "abcdefghijklmnopqrstuvwxyz";
 	
 	public static char getOption() {
-		System.out.print("\nChoose action: h");
-		System.out.print("(p)rint Tree, ");
-		System.out.print("(h)tml, ");
-		System.out.print("(r)eplace tag, ");
-		System.out.print("(b)oldface row, ");
-		System.out.print("(d)elete tag, ");
-		System.out.print("(a)dd tag, or ");
-		System.out.print("(q)uit? => ");
-		char result = scanner.nextLine().toLowerCase().charAt(0);
-		while (!options.contains(result + "")) {
-			System.out.print("\tYou must enter one of p, h, r, b, d, a, or q => ");
-			result = scanner.nextLine().toLowerCase().charAt(0);
+		System.out.print("Choose an action: (D)eposite, (W)ithdraw, (P)rint, (S)ort, (Q)uit => ");
+		char result = scanner.nextLine().toUpperCase().charAt(0);
+		while (!optionMain.contains(result + "")) {
+			System.out.print("\tYou must enter one of D, W, P, S, Q => ");
+			result = scanner.nextLine().toUpperCase().charAt(0);
 		}
 		return result;
 	}
 	
 	public static void main(String[] args) throws IOException {
-		System.out.println("Welcome to Wallet-Simulator!");
-		System.out.println("This program simulates a wallet by essentially allowing you to create a budget spreadsheet"); 
-		System.out.println("and provides a set of functions that can help you organize your budget.\n");
-		// TODO Auto-generated method stub
-		System.out.print("Enter HTML file name => ");
-		String htmlFile = scanner.nextLine();
-		//Tree tree = new Tree(new Scanner(new File(htmlFile)));
-		//tree.build();
+		System.out.println("\nWelcome to Wallet-Simulator!");
+		System.out.println("This program simulates a wallet by essentially allowing you to create a personal budget spreadsheet."); 
+		System.out.println("As well as providing you with a set of functions that can help you organize your budget.");
+		
+		System.out.print("\nChoose a starting action: (C)reate new Wallet, (U)pload txt Wallet, (Q)uit => ");
+		char result = scanner.nextLine().toUpperCase().charAt(0);
+		while (!optionStart.contains(result + "")) {
+			System.out.print("\tYou must enter one of C, U, Q => ");
+			result = scanner.nextLine().toUpperCase().charAt(0);
+		}
+
+		if (result == 'Q') {
+			System.exit(0);
+		} else if (result == 'C') {
+			Wallet wallet = new Wallet();
+			System.out.println("\nWallet created!");
+		} else {
+			System.out.print("Enter txt file name => ");
+			String txtFile = scanner.nextLine();
+			//Tree tree = new Tree(new Scanner(new File(txtFile)));
+			//tree.build();
+			System.out.println("\nWallet uploaded!");
+		}
 		
 		char option;
-		while ((option = getOption()) != 'q') {
+		while ((option = getOption()) != 'Q') {
 			System.out.println();
 			if (option == 'h') {
-				//System.out.print(tree.getHTML());
+				//System.out.print(tree.getTXT());
 			} else if (option == 'p') {
 					//tree.print();
 			} else if (option == 'r') {
