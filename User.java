@@ -6,10 +6,15 @@ import java.util.StringTokenizer;
 public class User {
 
 	static Scanner scanner = new Scanner(System.in);
+	static String optionStart = "cuq";
+	static String optionMain = "dwpsq";
+	static String optionPrint = "iebsq";
+	static String optionPrintAlt = "omy";
+	static String optionSort = "rlcq";
 	static String options = "abcdefghijklmnopqrstuvwxyz";
 	
 	public static char getOption() {
-		System.out.print("\nChoose action: ");
+		System.out.print("\nChoose action: h");
 		System.out.print("(p)rint Tree, ");
 		System.out.print("(h)tml, ");
 		System.out.print("(r)eplace tag, ");
