@@ -12,8 +12,27 @@ import java.util.Stack;
 
 public class Wallet {
 	
-	//ArrayList<Transaction> wallet;
+	private ArrayList<Transaction> wallet;
+	private double balance;
+	private double income;
+	private double expenses;
 
+	public Wallet() {
+		this.wallet = new ArrayList<Transaction>();
+		this.balance = 0.0;
+		this.income = 0.0;
+		this.expenses = 0.0;
+	}
+	/*
+	public Wallet(txtFile) {
+
+	}
+	*/
+	public void deposit() {
+
+	}
+
+	/*
 	public static void main(String[] args) {
 		ArrayList<Transaction> wallet = new ArrayList<Transaction>(); 
 
@@ -29,6 +48,7 @@ public class Wallet {
 		wallet.add(b);
 		System.out.println(wallet.get(1).toString());
 	}
+	*/
 }
 
 	

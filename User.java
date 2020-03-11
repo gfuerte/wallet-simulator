@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.lang.System;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -12,10 +13,9 @@ public class User {
 	static String optionPrint = "iebsqIEBSQ";
 	static String optionPrintAlt = "omyOMY";
 	static String optionSort = "rlcqRLCQ";
-	static String options = "abcdefghijklmnopqrstuvwxyz";
 	
 	public static char getOption() {
-		System.out.print("Choose an action: (D)eposite, (W)ithdraw, (P)rint, (S)ort, (Q)uit => ");
+		System.out.print("\nChoose an action: (D)eposite, (W)ithdraw, (P)rint, (S)ort, (Q)uit => ");
 		char result = scanner.nextLine().toUpperCase().charAt(0);
 		while (!optionMain.contains(result + "")) {
 			System.out.print("\tYou must enter one of D, W, P, S, Q => ");
@@ -40,7 +40,7 @@ public class User {
 			System.exit(0);
 		} else if (result == 'C') {
 			Wallet wallet = new Wallet();
-			System.out.println("\nWallet created!");
+			System.out.print("\nWallet created!");
 		} else {
 			System.out.print("Enter txt file name => ");
 			String txtFile = scanner.nextLine();
@@ -52,6 +52,18 @@ public class User {
 		char option;
 		while ((option = getOption()) != 'Q') {
 			System.out.println();
+			if (option == 'D') {
+				System.out.print("Enter amount => ");
+				//try {
+					double amount = scanner.nextDouble();
+				//} catch (InputMismatchException e) {
+				//	System.out.println("Please enter currency value only.");
+				//	System.out.print("Enter amount => ");
+				//	double amount = scanner.nextDouble();
+				//} 
+				//try catch negative and not doubles
+			}
+			/*
 			if (option == 'h') {
 				//System.out.print(tree.getTXT());
 			} else if (option == 'p') {
@@ -92,6 +104,7 @@ public class User {
 				String tag = scanner.nextLine().trim();
 				//tree.addTag(text, tag);
 			}
+			*/
 		}
 	}
 }
