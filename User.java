@@ -121,15 +121,22 @@ public class User {
 					}
 				} while (error);
 
+				System.out.print("\n");
 				if(category.equals("") && month == 0 && day == 0 && year == 0) {
 					wallet.deposit(amount);
+					System.out.println("Deposited $" + amount + ". Category and date are 'Unassigned'.");
 				} else if (category.equals("")) {
 					wallet.deposit(amount, month, day, year);
+					System.out.println("Deposited $" + amount + " on " + month + "/" + day + "/" + year + ". Category is 'Unassigned'.");
 				} else if (month == 0 && day == 0 && year == 0) {
 					wallet.deposit(amount, category);
+					System.out.println("Deposited $" + amount + " under category '" + category + "'. Date is unassigned.");
 				} else {
 					wallet.deposit(amount, category, month, day, year);
+					System.out.println("Deposited $" + amount + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
 				}
+
+
 				
 			} else if (option == 'W') {
 
