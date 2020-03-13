@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.lang.System;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -15,7 +17,7 @@ public class User {
 	static String optionSort = "rlcqRLCQ";
 	
 	public static char getOption() {
-		System.out.print("\nChoose an action: (D)eposite, (W)ithdraw, (P)rint, (S)ort, (Q)uit => ");
+		System.out.print("\nChoose an action: (D)eposit, (W)ithdraw, (P)rint, (S)ort, (Q)uit => ");
 		char result = scanner.nextLine().toUpperCase().charAt(0);
 		while (!optionMain.contains(result + "")) {
 			System.out.print("\tYou must enter one of D, W, P, S, Q => ");
@@ -36,10 +38,10 @@ public class User {
 			result = scanner.nextLine().toUpperCase().charAt(0);
 		}
 
+		Wallet wallet = new Wallet();
 		if (result == 'Q') {
 			System.exit(0);
 		} else if (result == 'C') {
-			Wallet wallet = new Wallet();
 			System.out.print("\nWallet created!");
 		} else {
 			System.out.print("Enter txt file name => ");
@@ -53,11 +55,18 @@ public class User {
 		while ((option = getOption()) != 'Q') {
 			System.out.println();
 			if (option == 'D') {
+				double amount = 0.0;
+				String category = "";
+				int month = 0;
+				int day = 0;
+				int year = 0;
 				boolean error = true;
 				do {
 					try {
 						System.out.print("Enter amount => $");
-						double amount = scanner.nextDouble();
+						BigDecimal amountBD = scanner.nextBigDecimal();
+						amountBD = amountBD.setScale(2, RoundingMode.HALF_DOWN);
+						amount = amountBD.doubleValue(); 
 						if (amount > 0) {
 							error = false;
 						} else {
@@ -68,6 +77,62 @@ public class User {
 					}
 					scanner.nextLine();
 				} while (error);
+				error = true;
+				do {
+					try {
+						System.out.print("Enter category => ");
+						category = scanner.nextLine();
+						error = false;
+					} catch (InputMismatchException e) {
+						System.out.println("Input not string. Please try again.\n");
+					}
+				} while (error);
+				error = true;
+				do {
+					System.out.print("Enter date (Date formate MM/DD/YYYY) => ");
+					String date = scanner.nextLine();
+					if(date.length() == 0) {
+						error = false;
+					}
+					if (date.length() == 10) {
+						boolean valid = true;
+						for(int i = 0; i < date.length(); i++) {
+							if (i != 2 && i != 5) {
+								valid = numCheck(date.charAt(i));
+								if (valid == false) {
+									break;
+								}
+							} else if (i == 2 || i == 5) {
+								if (date.charAt(i) != '/') {
+									valid = false;
+									break;
+								}
+							}
+						}
+						if (valid) {
+							month = Integer.parseInt(date.substring(0, 2));
+							day = Integer.parseInt(date.substring(3, 5));
+							year = Integer.parseInt(date.substring(6));
+							error = false;
+						}
+					}
+					if (error) {
+						System.out.println("Invalid format or value. Please use numerical values and include '/'.\n");
+					}
+				} while (error);
+
+				if(category.equals("") && month == 0 && day == 0 && year == 0) {
+					wallet.deposit(amount);
+				} else if (category.equals("")) {
+					wallet.deposit(amount, month, day, year);
+				} else if (month == 0 && day == 0 && year == 0) {
+					wallet.deposit(amount, category);
+				} else {
+					wallet.deposit(amount, category, month, day, year);
+				}
+				
+			} else if (option == 'W') {
+
 			}
 			/*
 			if (option == 'h') {
@@ -112,5 +177,25 @@ public class User {
 			}
 			*/
 		}
+	}
+
+	private boolean checkMonth(String month) {
+		month = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
+		boolean result = false;
+		if(month.equals("January") || month.equals("February") || month.equals("March") || month.equals("April") || month.equals("May")
+			|| month.equals("June") || month.equals("July") || month.equals("August") || month.equals("September") || month.equals("October")
+			|| month.equals("November") || month.equals("December")) {
+			result = true;
+		}
+		return result;
+	}
+
+	private static boolean numCheck(char num) {
+		boolean result = false;
+		if (num == '0' || num == '1' || num == '2' || num == '3' || num == '4' || num == '5' || 
+			num == '6' || num == '7' || num == '8' || num == '9') {
+			result = true;
+		}
+		return result;
 	}
 }

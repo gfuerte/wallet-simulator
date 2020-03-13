@@ -1,0 +1,4 @@
+- finish deposit
+	- print deposits to check
+- finish withdraw
+- start working on print

@@ -28,7 +28,19 @@ public class Wallet {
 
 	}
 	*/
-	public void deposit() {
+	public void deposit(double amount) {
+
+	}
+
+	public void deposit(double amount, String category) {
+
+	}
+
+	public void deposit(double amount, int month, int day, int year) {
+		
+	}
+
+	public void deposit(double amount, String category, int month, int day, int year) {
 
 	}
 
