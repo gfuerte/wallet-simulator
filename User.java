@@ -53,15 +53,21 @@ public class User {
 		while ((option = getOption()) != 'Q') {
 			System.out.println();
 			if (option == 'D') {
-				System.out.print("Enter amount => ");
-				//try {
-					double amount = scanner.nextDouble();
-				//} catch (InputMismatchException e) {
-				//	System.out.println("Please enter currency value only.");
-				//	System.out.print("Enter amount => ");
-				//	double amount = scanner.nextDouble();
-				//} 
-				//try catch negative and not doubles
+				boolean error = true;
+				do {
+					try {
+						System.out.print("Enter amount => $");
+						double amount = scanner.nextDouble();
+						if (amount > 0) {
+							error = false;
+						} else {
+							System.out.println("Please enter positive values only.\n");
+						}
+					} catch (InputMismatchException e) {
+						System.out.println("Input not money value. Please try again.\n");
+					}
+					scanner.nextLine();
+				} while (error);
 			}
 			/*
 			if (option == 'h') {
