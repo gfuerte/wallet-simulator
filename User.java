@@ -89,7 +89,7 @@ public class User {
 				} while (error);
 				error = true;
 				do {
-					System.out.print("Enter date (Date formate MM/DD/YYYY) => ");
+					System.out.print("Enter date (Date format MM/DD/YYYY) => ");
 					String date = scanner.nextLine();
 					if(date.length() == 0) {
 						error = false;
@@ -129,20 +129,17 @@ public class User {
 
 				if(category.equals("") && month == 0 && day == 0 && year == 0) {
 					wallet.deposit(amount);
-					System.out.println("Deposited $" + amount + ". Category and date are 'Unassigned'.");
+					System.out.println("Deposited $" + amountString + ". Category and date are 'Unassigned'.");
 				} else if (category.equals("")) {
 					wallet.deposit(amount, month, day, year);
-					System.out.println("Deposited $" + amount + " on " + month + "/" + day + "/" + year + ". Category is 'Unassigned'.");
+					System.out.println("Deposited $" + amountString + " on " + month + "/" + day + "/" + year + ". Category is 'Unassigned'.");
 				} else if (month == 0 && day == 0 && year == 0) {
 					wallet.deposit(amount, category);
-					System.out.println("Deposited $" + amount + " under category '" + category + "'. Date is unassigned.");
+					System.out.println("Deposited $" + amountString + " under category '" + category + "'. Date is unassigned.");
 				} else {
 					wallet.deposit(amount, category, month, day, year);
-					System.out.println("Deposited $" + amount + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
+					System.out.println("Deposited $" + amountString + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
 				}
-
-
-				
 			} else if (option == 'W') {
 
 			}
