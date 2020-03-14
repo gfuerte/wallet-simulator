@@ -142,6 +142,10 @@ public class User {
 				}
 			} else if (option == 'W') {
 
+			} else if (option == 'P') {
+				System.out.println("Print function still in progress!");
+			} else if (option == 'S') {
+				System.out.println("Sort function still in progress!");
 			}
 			/*
 			if (option == 'h') {
