@@ -14,7 +14,7 @@ public class Wallet {
 	
 	private ArrayList<Transaction> tranactions;
 	private ArrayList<Transaction> deposits;
-	private ArrayList<Transaction> withdraws;
+	private ArrayList<Transaction> withdrawals;
 	private double balance;
 	private double income;
 	private double expenses;
@@ -22,7 +22,7 @@ public class Wallet {
 	public Wallet() {
 		this.tranactions = new ArrayList<Transaction>();
 		this.deposits = new ArrayList<Transaction>();
-		this.withdraws = new ArrayList<Transaction>();
+		this.withdrawals = new ArrayList<Transaction>();
 		this.balance = 0.0;
 		this.income = 0.0;
 		this.expenses = 0.0;
@@ -69,7 +69,7 @@ public class Wallet {
 	public void withdraw(double amount) {
 		Transaction temp = new Transaction(amount*-1);
 		this.tranactions.add(temp);
-		this.withdraws.add(temp);
+		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
 	}
@@ -77,7 +77,7 @@ public class Wallet {
 	public void withdraw(double amount, String category) {
 		Transaction temp = new Transaction(amount*-1, category);
 		this.tranactions.add(temp);
-		this.withdraws.add(temp);
+		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
 	}
@@ -86,7 +86,7 @@ public class Wallet {
 		Date date = new Date(day, month, year);
 		Transaction temp = new Transaction(amount*-1, date);
 		this.tranactions.add(temp);
-		this.withdraws.add(temp);
+		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
 	}
@@ -95,7 +95,7 @@ public class Wallet {
 		Date date = new Date(day, month, year);
 		Transaction temp = new Transaction(amount*-1, date, category);
 		this.tranactions.add(temp);
-		this.withdraws.add(temp);
+		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
 	}

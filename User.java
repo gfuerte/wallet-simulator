@@ -12,7 +12,7 @@ public class User {
 	static Scanner scanner = new Scanner(System.in);
 	static String optionStart = "cuqCUQ";
 	static String optionMain = "dwpsqDWPSQ";
-	static String optionPrint = "iebsqIEBSQ";
+	static String optionPrint = "iebtdwIEBTDW";
 	static String optionPrintAlt = "omyOMY";
 	static String optionSort = "rlcqRLCQ";
 	
@@ -219,7 +219,34 @@ public class User {
 					System.out.println("Withdrawed $" + amountString + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
 				}
 			} else if (option == 'P') {
-				System.out.println("Print function still in progress!");
+				System.out.print("Choose what to print: (I)ncome, (E)xpenses, (B)alance, all (T)ransactions, all (D)eposits, all (W)ithdrawals => ");
+				char option_second = scanner.nextLine().toUpperCase().charAt(0);
+				while (!optionPrint.contains(option_second + "")) {
+					System.out.print("\tYou must enter one of I, E, B, T, D, W => ");
+					option_second = scanner.nextLine().toUpperCase().charAt(0);
+				}
+				System.out.print("Choose printing option: (O)verall, by (M)onth, by (Y)ear => ");
+				char option_third = scanner.nextLine().toUpperCase().charAt(0);
+				while (!optionPrintAlt.contains(option_third + "")) {
+					System.out.print("\tYou must enter one of O, M, Y => ");
+					option_third = scanner.nextLine().toUpperCase().charAt(0);
+				}
+				if (option_second == 'I') {
+
+				} else if (option_second == 'E') {
+
+				} else if (option_second == 'B') {
+
+				} else if (option_second == 'T') {
+
+				} else if (option_second == 'D') {
+
+				} else if (option_second == 'W') {
+
+				}
+
+
+		
 			} else if (option == 'S') {
 				System.out.println("Sort function still in progress!");
 			}
@@ -266,17 +293,6 @@ public class User {
 			}
 			*/
 		}
-	}
-
-	private boolean checkMonth(String month) {
-		month = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
-		boolean result = false;
-		if(month.equals("January") || month.equals("February") || month.equals("March") || month.equals("April") || month.equals("May")
-			|| month.equals("June") || month.equals("July") || month.equals("August") || month.equals("September") || month.equals("October")
-			|| month.equals("November") || month.equals("December")) {
-			result = true;
-		}
-		return result;
 	}
 
 	private static boolean numCheck(char num) {
