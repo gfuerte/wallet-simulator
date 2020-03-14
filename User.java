@@ -122,6 +122,11 @@ public class User {
 				} while (error);
 
 				System.out.print("\n");
+				String amountString = Double.toString(amount);
+				if(amountString.substring(amountString.indexOf('.') + 1).length() == 1) {
+					amountString += "0";
+				}
+
 				if(category.equals("") && month == 0 && day == 0 && year == 0) {
 					wallet.deposit(amount);
 					System.out.println("Deposited $" + amount + ". Category and date are 'Unassigned'.");
