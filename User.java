@@ -79,13 +79,9 @@ public class User {
 				} while (error);
 				error = true;
 				do {
-					try {
-						System.out.print("Enter category => ");
-						category = scanner.nextLine();
-						error = false;
-					} catch (InputMismatchException e) {
-						System.out.println("Input not string. Please try again.\n");
-					}
+					System.out.print("Enter category => ");
+					category = scanner.nextLine();
+					error = false;
 				} while (error);
 				error = true;
 				do {
@@ -141,7 +137,87 @@ public class User {
 					System.out.println("Deposited $" + amountString + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
 				}
 			} else if (option == 'W') {
+				double amount = 0.0;
+				String category = "";
+				int month = 0;
+				int day = 0;
+				int year = 0;
+				boolean error = true;
+				do {
+					try {
+						System.out.print("Enter amount => $");
+						BigDecimal amountBD = scanner.nextBigDecimal();
+						amountBD = amountBD.setScale(2, RoundingMode.HALF_DOWN);
+						amount = amountBD.doubleValue(); 
+						if (amount > 0) {
+							error = false;
+						} else {
+							System.out.println("Please enter positive values only.\n");
+						}
+					} catch (InputMismatchException e) {
+						System.out.println("Input not money value. Please try again.\n");
+					}
+					scanner.nextLine();
+				} while (error);
+				error = true;
+				do {
+					System.out.print("Enter category => ");
+					category = scanner.nextLine();
+					error = false;
+				} while (error);
+				error = true;
+				do {
+					System.out.print("Enter date (Date format MM/DD/YYYY) => ");
+					String date = scanner.nextLine();
+					if(date.length() == 0) {
+						error = false;
+					}
+					if (date.length() == 10) {
+						boolean valid = true;
+						for(int i = 0; i < date.length(); i++) {
+							if (i != 2 && i != 5) {
+								valid = numCheck(date.charAt(i));
+								if (valid == false) {
+									break;
+								}
+							} else if (i == 2 || i == 5) {
+								if (date.charAt(i) != '/') {
+									valid = false;
+									break;
+								}
+							}
+						}
+						if (valid) {
+							month = Integer.parseInt(date.substring(0, 2));
+							day = Integer.parseInt(date.substring(3, 5));
+							year = Integer.parseInt(date.substring(6));
+							error = false;
+						}
+					}
+					if (error) {
+						System.out.println("Invalid format or value. Please use numerical values and include '/'.\n");
+					}
+				} while (error);
 
+				System.out.print("\n");
+				String amountString = Double.toString(amount);
+				if(amountString.substring(amountString.indexOf('.') + 1).length() == 1) {
+					amountString += "0";
+				}
+
+				if(category.equals("") && month == 0 && day == 0 && year == 0) {
+					wallet.withdraw(amount);
+					System.out.println("Withdrawed $" + amountString + ". Category and date are 'Unassigned'.");
+				} else if (category.equals("")) {
+					wallet.withdraw(amount, month, day, year);
+					System.out.println("Withdrawed $" + amountString + " on " + month + "/" + day + "/" + year + ". Category is 'Unassigned'.");
+				} else if (month == 0 && day == 0 && year == 0) {
+					wallet.withdraw(amount, category);
+					System.out.println("Withdrawed $" + amountString + " under category '" + category + "'. Date is unassigned.");
+				} else {
+					wallet.withdraw(amount, category, month, day, year);
+					System.out.println("Withdrawed $" + amountString + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
+				}
 			} else if (option == 'P') {
 				System.out.println("Print function still in progress!");
 			} else if (option == 'S') {

@@ -1,5 +1,4 @@
-1.7
-- finish deposit
-	- print deposits to check
+1.7.1
 - finish withdraw
+- print deposits to check
 - start working on print
