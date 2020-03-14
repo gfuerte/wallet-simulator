@@ -70,16 +70,16 @@ public class Wallet {
 		Transaction temp = new Transaction(amount*-1);
 		this.tranactions.add(temp);
 		this.withdraws.add(temp);
-		this.balance += amount;
-		this.income += amount;
+		this.balance -= amount;
+		this.expenses += amount;
 	}
 
 	public void withdraw(double amount, String category) {
 		Transaction temp = new Transaction(amount*-1, category);
 		this.tranactions.add(temp);
 		this.withdraws.add(temp);
-		this.balance += amount;
-		this.income += amount;
+		this.balance -= amount;
+		this.expenses += amount;
 	}
 
 	public void withdraw(double amount, int month, int day, int year) {
@@ -87,8 +87,8 @@ public class Wallet {
 		Transaction temp = new Transaction(amount*-1, date);
 		this.tranactions.add(temp);
 		this.withdraws.add(temp);
-		this.balance += amount;
-		this.income += amount;
+		this.balance -= amount;
+		this.expenses += amount;
 	}
 
 	public void withdraw(double amount, String category, int month, int day, int year) {
@@ -96,8 +96,8 @@ public class Wallet {
 		Transaction temp = new Transaction(amount*-1, date, category);
 		this.tranactions.add(temp);
 		this.withdraws.add(temp);
-		this.balance += amount;
-		this.income += amount;
+		this.balance -= amount;
+		this.expenses += amount;
 	}
 
 	/*
