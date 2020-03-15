@@ -100,6 +100,18 @@ public class Wallet {
 		this.expenses += amount;
 	}
 
+	public double getBalance() {
+		return this.balance;
+	}
+
+	public double getIncome() {
+		return this.income;
+	}
+
+	public double getExpenses() {
+		return this.expenses;
+	}
+
 	/*
 	public static void main(String[] args) {
 		ArrayList<Transaction> wallet = new ArrayList<Transaction>(); 
