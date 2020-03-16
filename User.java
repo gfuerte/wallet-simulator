@@ -225,14 +225,19 @@ public class User {
 					System.out.print("\tYou must enter one of I, E, B, T, D, W => ");
 					option_second = scanner.nextLine().toUpperCase().charAt(0);
 				}
+				/*
 				System.out.print("Choose printing option: (O)verall, by (M)onth, by (Y)ear => ");
 				char option_third = scanner.nextLine().toUpperCase().charAt(0);
 				while (!optionPrintAlt.contains(option_third + "")) {
 					System.out.print("\tYou must enter one of O, M, Y => ");
 					option_third = scanner.nextLine().toUpperCase().charAt(0);
 				}
+				*/
 				if (option_second == 'I') {
-
+					//if(amountString.substring(amountString.indexOf('.') + 1).length() == 1) {
+					//amountString += "0";
+					//}	
+					System.out.println("Your total income is: $");
 				} else if (option_second == 'E') {
 
 				} else if (option_second == 'B') {
@@ -302,5 +307,9 @@ public class User {
 			result = true;
 		}
 		return result;
+	}
+
+	private static String format() {
+		return "";
 	}
 }
