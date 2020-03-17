@@ -100,28 +100,34 @@ public class Wallet {
 		this.expenses += amount;
 	}
 
-	public String getBalanceString() {
+	public void printBalance() {
 		String balanceString = Double.toString(this.balance);
 		if(balanceString.substring(balanceString.indexOf('.') + 1).length() == 1) {
 			balanceString += "0";
 		}
-		return balanceString;
+		System.out.println("Your total balance is: $" + balanceString);
+
 	}
 
-	public String getIncomeString() {
+	public void printIncome() {
 		String incomeString = Double.toString(this.income);
 		if(incomeString.substring(incomeString.indexOf('.') + 1).length() == 1) {
 			incomeString += "0";
 		}
-		return incomeString;
+		System.out.println("Your total income is: $" + incomeString);
+
 	}
 
-	public String getExpensesString() {
+	public void printExpenses() {
 		String expensesString = Double.toString(this.expenses);
 		if(expensesString.substring(expensesString.indexOf('.') + 1).length() == 1) {
 			expensesString += "0";
 		}
-		return expensesString;
+		System.out.println("Your total expenses are: $" + expensesString);
+	}
+
+	public void printTransactions() {
+
 	}
 
 	/*

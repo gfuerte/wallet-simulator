@@ -226,11 +226,11 @@ public class User {
 					option_second = scanner.nextLine().toUpperCase().charAt(0);
 				}
 				if (option_second == 'B') {
-					System.out.println("Your total balance is: $" + wallet.getBalanceString());
+					wallet.printBalance();
 				} else if (option_second == 'I') {
-					System.out.println("Your total income is: $" + wallet.getIncomeString());
+					wallet.printIncome();
 				} else if (option_second == 'E') {
-					System.out.println("Your total expenses are: $" + wallet.getExpensesString());
+					wallet.printExpenses();
 				} else if (option_second == 'T') {
 
 				} else if (option_second == 'D') {
