@@ -1,3 +1,2 @@
-1.8.2
-- print deposits to check
-- start working on print
+1.8.6
+- Start sorting

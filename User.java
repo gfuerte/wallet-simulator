@@ -232,15 +232,12 @@ public class User {
 				} else if (option_second == 'E') {
 					wallet.printExpenses();
 				} else if (option_second == 'T') {
-
+					wallet.printTransactions();
 				} else if (option_second == 'D') {
-
+					wallet.printDeposits();
 				} else if (option_second == 'W') {
-
+					wallet.printWithdrawals();
 				}
-
-
-		
 			} else if (option == 'S') {
 				System.out.println("Sort function still in progress!");
 			}
