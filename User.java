@@ -219,29 +219,18 @@ public class User {
 					System.out.println("Withdrawed $" + amountString + " on " + month + "/" + day + "/" + year + " under category '" + category + "'.");
 				}
 			} else if (option == 'P') {
-				System.out.print("Choose what to print: (I)ncome, (E)xpenses, (B)alance, all (T)ransactions, all (D)eposits, all (W)ithdrawals => ");
+				System.out.print("Choose what to print: (B)alance, (I)ncome, (E)xpenses, all (T)ransactions, all (D)eposits, all (W)ithdrawals => ");
 				char option_second = scanner.nextLine().toUpperCase().charAt(0);
 				while (!optionPrint.contains(option_second + "")) {
-					System.out.print("\tYou must enter one of I, E, B, T, D, W => ");
+					System.out.print("\tYou must enter one of B, I, E, T, D, W => ");
 					option_second = scanner.nextLine().toUpperCase().charAt(0);
 				}
-				/*
-				System.out.print("Choose printing option: (O)verall, by (M)onth, by (Y)ear => ");
-				char option_third = scanner.nextLine().toUpperCase().charAt(0);
-				while (!optionPrintAlt.contains(option_third + "")) {
-					System.out.print("\tYou must enter one of O, M, Y => ");
-					option_third = scanner.nextLine().toUpperCase().charAt(0);
-				}
-				*/
-				if (option_second == 'I') {
-					//if(amountString.substring(amountString.indexOf('.') + 1).length() == 1) {
-					//amountString += "0";
-					//}	
-					System.out.println("Your total income is: $");
+				if (option_second == 'B') {
+					System.out.println("Your total balance is: $" + wallet.getBalanceString());
+				} else if (option_second == 'I') {
+					System.out.println("Your total income is: $" + wallet.getIncomeString());
 				} else if (option_second == 'E') {
-
-				} else if (option_second == 'B') {
-
+					System.out.println("Your total expenses are: $" + wallet.getExpensesString());
 				} else if (option_second == 'T') {
 
 				} else if (option_second == 'D') {
@@ -307,9 +296,5 @@ public class User {
 			result = true;
 		}
 		return result;
-	}
-
-	private static String format() {
-		return "";
 	}
 }

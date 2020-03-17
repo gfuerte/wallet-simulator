@@ -100,16 +100,28 @@ public class Wallet {
 		this.expenses += amount;
 	}
 
-	public double getBalance() {
-		return this.balance;
+	public String getBalanceString() {
+		String balanceString = Double.toString(this.balance);
+		if(balanceString.substring(balanceString.indexOf('.') + 1).length() == 1) {
+			balanceString += "0";
+		}
+		return balanceString;
 	}
 
-	public double getIncome() {
-		return this.income;
+	public String getIncomeString() {
+		String incomeString = Double.toString(this.income);
+		if(incomeString.substring(incomeString.indexOf('.') + 1).length() == 1) {
+			incomeString += "0";
+		}
+		return incomeString;
 	}
 
-	public double getExpenses() {
-		return this.expenses;
+	public String getExpensesString() {
+		String expensesString = Double.toString(this.expenses);
+		if(expensesString.substring(expensesString.indexOf('.') + 1).length() == 1) {
+			expensesString += "0";
+		}
+		return expensesString;
 	}
 
 	/*
