@@ -249,9 +249,9 @@ public class User {
 				} else if (option_second == 'C') {
 					wallet.sortCategory();
 				} else if (option_second == 'N') {
-
+					wallet.sortNewest();
 				} else if (option_second == 'O') {
-
+					wallet.sortOldest();
 				}
 			}
 		}

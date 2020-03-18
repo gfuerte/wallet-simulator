@@ -173,11 +173,31 @@ public class Wallet {
 	}
 
 	public void sortNewest() {
-
+		ArrayList<Transaction> sorted = new ArrayList<Transaction>(transactions);
+		for(int i = 0; i < sorted.size(); i++) {
+			for(int j = i+1; j < sorted.size(); j++) {
+				if(sorted.get(i).getDate().getValue() < sorted.get(j).getDate().getValue()) {
+					Transaction temp = sorted.get(i);
+					sorted.set(i, sorted.get(j));
+					sorted.set(j, temp);
+				}
+			}
+		}
+		this.transactions = new ArrayList<Transaction>(sorted);
 	}
 
 	public void sortOldest() {
-
+		ArrayList<Transaction> sorted = new ArrayList<Transaction>(transactions);
+		for(int i = 0; i < sorted.size(); i++) {
+			for(int j = i+1; j < sorted.size(); j++) {
+				if(sorted.get(i).getDate().getValue() > sorted.get(j).getDate().getValue()) {
+					Transaction temp = sorted.get(i);
+					sorted.set(i, sorted.get(j));
+					sorted.set(j, temp);
+				}
+			}
+		}
+		this.transactions = new ArrayList<Transaction>(sorted);
 	}
 
 	/*

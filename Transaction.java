@@ -60,8 +60,8 @@ public class Transaction {
 		return this.amount;
 	}
 
-	public String getDate() {
-		return this.date.toString();
+	public Date getDate() {
+		return this.date;
 	}
 
 	public String getCategory() {
