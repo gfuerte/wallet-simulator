@@ -6,4 +6,4 @@ Download this repo and run the User class in command line.
 Upon running the program, you will be guided on how to use it.
 To upload your own spreadsheet, create a new txt and follow the format shown in example.txt or example2.txt.
 
-Personal project with the intention of creating a memory of my lost wallet (now found!) as well as learning the pillars of OOP.
+Personal project with the intention of creating a memory of my lost wallet (now found!) but, most importantly, learning the pillars of OOP.
