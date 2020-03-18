@@ -13,8 +13,7 @@ public class User {
 	static String optionStart = "cuqCUQ";
 	static String optionMain = "dwpsqDWPSQ";
 	static String optionPrint = "iebtdwIEBTDW";
-	static String optionPrintAlt = "omyOMY";
-	static String optionSort = "rlcqRLCQ";
+	static String optionSort = "dcnoDCNO";
 	
 	public static char getOption() {
 		System.out.print("\nChoose an action: (D)eposit, (W)ithdraw, (P)rint, (S)ort, (Q)uit => ");
@@ -239,7 +238,12 @@ public class User {
 					wallet.printWithdrawals();
 				}
 			} else if (option == 'S') {
-				System.out.println("Sort function still in progress!");
+				System.out.print("Choose sorting option: by (D)efault, by (C)ategory, by (N)ewest, by (O)ldest => ");
+				char option_second = scanner.nextLine().toUpperCase().charAt(0);
+				while (!optionSort.contains(option_second + "")) {
+					System.out.print("\tYou must enter one of B, I, E, T, D, W => ");
+					option_second = scanner.nextLine().toUpperCase().charAt(0);
+				}
 			}
 			/*
 			if (option == 'h') {
