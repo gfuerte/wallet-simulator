@@ -13,6 +13,7 @@ import java.util.Stack;
 public class Wallet {
 	
 	private ArrayList<Transaction> transactions;
+	private ArrayList<Transaction> defaultList;
 	private ArrayList<Transaction> deposits;
 	private ArrayList<Transaction> withdrawals;
 	private double balance;
@@ -21,6 +22,7 @@ public class Wallet {
 
 	public Wallet() {
 		this.transactions = new ArrayList<Transaction>();
+		this.defaultList = new ArrayList<Transaction>();
 		this.deposits = new ArrayList<Transaction>();
 		this.withdrawals = new ArrayList<Transaction>();
 		this.balance = 0.0;
@@ -35,6 +37,7 @@ public class Wallet {
 	public void deposit(double amount) {
 		Transaction temp = new Transaction(amount);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.deposits.add(temp);
 		this.balance += amount;
 		this.income += amount;
@@ -43,6 +46,7 @@ public class Wallet {
 	public void deposit(double amount, String category) {
 		Transaction temp = new Transaction(amount, category);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.deposits.add(temp);
 		this.balance += amount;
 		this.income += amount;
@@ -52,6 +56,7 @@ public class Wallet {
 		Date date = new Date(day, month, year);
 		Transaction temp = new Transaction(amount, date);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.deposits.add(temp);
 		this.balance += amount;
 		this.income += amount;
@@ -61,6 +66,7 @@ public class Wallet {
 		Date date = new Date(day, month, year);
 		Transaction temp = new Transaction(amount, date, category);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.deposits.add(temp);
 		this.balance += amount;
 		this.income += amount;
@@ -69,6 +75,7 @@ public class Wallet {
 	public void withdraw(double amount) {
 		Transaction temp = new Transaction(amount*-1);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
@@ -77,6 +84,7 @@ public class Wallet {
 	public void withdraw(double amount, String category) {
 		Transaction temp = new Transaction(amount*-1, category);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
@@ -86,6 +94,7 @@ public class Wallet {
 		Date date = new Date(day, month, year);
 		Transaction temp = new Transaction(amount*-1, date);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
@@ -95,6 +104,7 @@ public class Wallet {
 		Date date = new Date(day, month, year);
 		Transaction temp = new Transaction(amount*-1, date, category);
 		this.transactions.add(temp);
+		this.defaultList.add(temp);
 		this.withdrawals.add(temp);
 		this.balance -= amount;
 		this.expenses += amount;
@@ -142,6 +152,32 @@ public class Wallet {
 		for(int i = 0; i < withdrawals.size(); i++) {
 			System.out.println(withdrawals.get(i).toString());
 		}
+	}
+
+	public void sortDefault() {
+		this.transactions = new ArrayList<Transaction>(defaultList);
+	}
+
+	public void sortCategory() {
+		ArrayList<Transaction> sorted = new ArrayList<Transaction>(transactions);
+		for(int i = 0; i < sorted.size(); i++) {
+			for(int j = i+1; j < sorted.size(); j++) {
+				if(sorted.get(i).getCategory().compareTo(sorted.get(j).getCategory()) > 0) {
+					Transaction temp = sorted.get(i);
+					sorted.set(i, sorted.get(j));
+					sorted.set(j, temp);
+				}
+			}
+		}
+		this.transactions = new ArrayList<Transaction>(sorted);
+	}
+
+	public void sortNewest() {
+
+	}
+
+	public void sortOldest() {
+
 	}
 
 	/*

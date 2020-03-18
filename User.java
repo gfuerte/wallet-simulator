@@ -241,52 +241,19 @@ public class User {
 				System.out.print("Choose sorting option: by (D)efault, by (C)ategory, by (N)ewest, by (O)ldest => ");
 				char option_second = scanner.nextLine().toUpperCase().charAt(0);
 				while (!optionSort.contains(option_second + "")) {
-					System.out.print("\tYou must enter one of B, I, E, T, D, W => ");
+					System.out.print("\tYou must enter one of D, C, N, O => ");
 					option_second = scanner.nextLine().toUpperCase().charAt(0);
 				}
-			}
-			/*
-			if (option == 'h') {
-				//System.out.print(tree.getTXT());
-			} else if (option == 'p') {
-					//tree.print();
-			} else if (option == 'r') {
-				System.out.print("\tEnter old tag => ");
-				String oldTag = scanner.nextLine();
-				System.out.print("\tEnter new tag => ");
-				String newTag = scanner.nextLine();
-				//tree.replaceTag(oldTag, newTag);
-			} else if (option == 'b') {
-				System.out.print("\tEnter row number (1..n) => ");
-				int row;
-				while (true) {
-					try {
-						row = Integer.parseInt(scanner.nextLine());
-						if (row > 0) {
-							break;
-						} else {
-							throw new NumberFormatException();
-						}
-					} catch (NumberFormatException e) {
-						System.out.print("\tYou must enter a positive integer => ");
-					}
+				if (option_second == 'D') {
+					wallet.sortDefault();
+				} else if (option_second == 'C') {
+					wallet.sortCategory();
+				} else if (option_second == 'N') {
+
+				} else if (option_second == 'O') {
+
 				}
-				try {
-					//tree.boldRow(row);
-				} catch (IllegalArgumentException iae) {
-					//System.out.println("\tTable does not have row " + row);
-				}
-			} else if (option == 'd') {
-				System.out.print("\tEnter tag to remove => ");
-				//tree.removeTag(scanner.nextLine().trim());
-			} else if (option == 'a') {
-				System.out.print("\tEnter text to tag => ");
-				String text = scanner.nextLine().trim();
-				System.out.print("\tEnter tag => ");
-				String tag = scanner.nextLine().trim();
-				//tree.addTag(text, tag);
 			}
-			*/
 		}
 	}
 
