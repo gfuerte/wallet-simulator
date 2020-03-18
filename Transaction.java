@@ -9,17 +9,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 
-/*Dates
---> new Date() - current
---> new Date(int year, int month, int date)
-hrs min sec if needed
-*/
-
-/*BigDecimal
-BigDecimal a = new BigDecimal("1.234");
-BigDecimal b = a.setScale(2, RoundingMode.DOWN); // => BigDecimal("1.23")
-*/
-
 public class Transaction {
 
 	private double amount;

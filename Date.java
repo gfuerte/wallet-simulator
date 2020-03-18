@@ -73,17 +73,16 @@ public class Date {
 		return 0;
 	}
 
-	//don't think i need this constructor
-	public Date(int day, String month, int year) {
-		this.day = day;
-		this.month = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
-		this.year = year;
-	}
-
 	public Date(int day, int month, int year) {
-		this.day = day;
-		this.month = monthToString(month);
-		this.year = year;
+		if (day == -1 || month == -1 || year == -1) {
+			this.day = -1;
+			this.month = "";
+			this.year = -1;
+		} else {
+			this.day = day;
+			this.month = monthToString(month);
+			this.year = year;
+		}
 	}
 
 	public int getDay() {

@@ -1,0 +1,4 @@
+Deposit $100 Work 03/01/2020
+Withdraw $10 Movie 03/02/2020
+Withdraw $20 Gas 03/03/2020
+Deposit $50 Allowance 03/04/2020

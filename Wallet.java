@@ -9,7 +9,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;	
 
-
 public class Wallet {
 	
 	private ArrayList<Transaction> transactions;
@@ -29,11 +28,7 @@ public class Wallet {
 		this.income = 0.0;
 		this.expenses = 0.0;
 	}
-	/*
-	public Wallet(txtFile) {
 
-	}
-	*/
 	public void deposit(double amount) {
 		Transaction temp = new Transaction(amount);
 		this.transactions.add(temp);
@@ -199,44 +194,4 @@ public class Wallet {
 		}
 		this.transactions = new ArrayList<Transaction>(sorted);
 	}
-
-	/*
-	public static void main(String[] args) {
-		ArrayList<Transaction> wallet = new ArrayList<Transaction>(); 
-
-		//test
-		Date adate = new Date();
-		Transaction a = new Transaction(2.0, adate, "Movie");
-		wallet.add(a);
-		System.out.println(wallet.get(0).toString());
-
-
-		Date test = new Date(6, 12, 2020);
-		Transaction b = new Transaction(40.00, test, "Gym");
-		wallet.add(b);
-		System.out.println(wallet.get(1).toString());
-	}
-	*/
 }
-
-	
- 	/*
-	// Deposite/Add (amount, category, date)
-	// Withdraw/Delete (amount, category, date)
-	// SortRecently
-	// SortLatest
-	// SortCategory?
-	// SortAmount
-	// PrintTotalIncome
-	// PrintTotalExpenses
-	// PrintCurrentBalance
-	*/
-
-/* Self learned notes cause nobody has taught me these:
-Encapsulation is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates.
-	- wallet is encapsulated because the global variables are private and can only be accessed via public methods
-
-Inheritance is an important pillar of OOP(Object Oriented Programming). It is the mechanism in java by which one class is allow to inherit the features(fields and methods) of another class.
-	- wallet (or any other object) can be subject to inheritence using 'extends' where a class receives all the fields a class has and adds onto it
-
-*/

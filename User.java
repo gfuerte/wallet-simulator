@@ -43,11 +43,71 @@ public class User {
 		} else if (result == 'C') {
 			System.out.print("\nWallet created!");
 		} else {
-			System.out.print("Enter txt file name => ");
-			String txtFile = scanner.nextLine();
-			//Tree tree = new Tree(new Scanner(new File(txtFile)));
-			//tree.build();
-			System.out.println("\nWallet uploaded!");
+			boolean error = true;
+			do {
+				try {
+					System.out.print("Enter txt file name => ");
+					String txtFile = scanner.nextLine();
+					Scanner fileScanner = new Scanner(new File(txtFile));
+					while (fileScanner.hasNext()) {
+						String cur = fileScanner.nextLine();
+						StringTokenizer tokenizer = new StringTokenizer(cur);
+						if (tokenizer.countTokens() != 4) {
+							throw new IOException();
+						}
+						String action = tokenizer.nextToken();
+						String amountString = tokenizer.nextToken();
+						String category = tokenizer.nextToken();
+						String date = tokenizer.nextToken();
+						int month = -1;
+						int day = -1;
+						int year = -1;
+						double amount = 0.0;
+						try {
+							amountString = amountString.substring(1);
+							BigDecimal amountBD = new BigDecimal(amountString);
+							amountBD = amountBD.setScale(2, RoundingMode.HALF_DOWN);
+							amount = amountBD.doubleValue();
+						} catch (InputMismatchException e) {
+							throw new IOException();
+						}
+						if ((!action.equals("Deposit") && !action.equals("Withdraw")) || amount <= 0 || date.length() != 10 ) {
+							throw new IOException();
+						} else {
+							boolean valid = true;
+							for(int i = 0; i < date.length(); i++) {
+								if (i != 2 && i != 5) {
+									valid = numCheck(date.charAt(i));
+								}
+								if (valid == false) {
+									break;
+								} else if (i == 2 || i == 5) {
+									if (date.charAt(i) != '/') {
+										valid = false;
+										break;
+									}
+								}
+							}
+							if (valid) {
+								month = Integer.parseInt(date.substring(0, 2));
+								day = Integer.parseInt(date.substring(3, 5));
+								year = Integer.parseInt(date.substring(6));
+							} else {
+								throw new IOException();
+							}
+						}
+						if (action.equals("Deposit")) {
+							wallet.deposit(amount, category, month, day, year);
+						} else {
+							wallet.withdraw(amount, category, month, day, year);
+						}
+					}
+					error = false;
+					System.out.println("\nWallet uploaded!");
+				} catch (IOException e) {
+					System.out.println("\nFile not found or improper format. Please try again.\n");
+				}
+			} while (error);
 		}
 		
 		char option;
